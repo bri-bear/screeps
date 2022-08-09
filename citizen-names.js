@@ -2,7 +2,6 @@ const worker_adjectives = ["Burnt", "Urist", "Fulfilled", "Greasy", "Happy", "Co
 const worker_nouns = ["Prole", "Comrade", "Worker"]
 
 
-// Use this for workers
 function genProleName() {
     return worker_adjectives[Math.floor(Math.random() * worker_adjectives.length)] 
     + " " // there is a space here its just fucking invisible
@@ -10,6 +9,7 @@ function genProleName() {
 }
 
 module.exports = {
-    worker_adjectives, worker_nouns,
-    genName
+    worker_nouns,
+    worker_adjectives,
+    genProleName
 };
