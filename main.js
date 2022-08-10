@@ -1,7 +1,7 @@
 let roleMiner = require('role.miner');
 let roleUpgrader = require('role.upgrader');
 let roleBuilder = require('role.builder');
-const { creepSignal } = require('./nervous-system');
+var nervSys = require('nervous-system');
 
 
 
