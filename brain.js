@@ -1,7 +1,5 @@
 class Brain {
     constructor() {
-        this.room = Game.rooms
-        console.log(Game.rooms);
         console.log("brain online..")
         this.creepCount = _.size(Game.creeps);
         this.roleArray = []
