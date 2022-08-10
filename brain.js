@@ -1,18 +1,15 @@
 class Brain {
     constructor() {
+        this.room = Game.rooms
+        console.log(Game.rooms);
         console.log("brain online..")
         this.creepCount = _.size(Game.creeps);
         this.roleArray = []
         this.joblessCreep = []
-
-        // Keep creep count up
-        if (_.size(Game.creeps) !== 5) {
-                Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], Math.floor(Math.random() * 500));
-                console.log("producing filth")
-        }
     }
 
-    
+   
+
 
     creepSignal() {
          Game.spawns['Spawn1'].spawnCreep([WORK, CARRY, MOVE], Math.floor(Math.random() * 500));
