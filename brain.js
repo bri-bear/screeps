@@ -20,9 +20,9 @@ class Brain {
     }
 
     checkCreeps() {
-        for (var name in Game.creeps) {
-            var role = Game.creeps[name].memory.role;
-            var name = Game.creeps[name]
+        for (let name in Game.creeps) {
+            let role = Game.creeps[name].memory.role;
+            let name = Game.creeps[name]
 
             console.log(role);
             if (role !== undefined) { 

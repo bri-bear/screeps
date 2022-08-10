@@ -1,7 +1,7 @@
-var roleMiner = require('role.miner');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
-var brain = require('brain');
+let roleMiner = require('role.miner');
+let roleUpgrader = require('role.upgrader');
+let roleBuilder = require('role.builder');
+let brain = require('brain');
 
 
 manager = new brain.Brain();
@@ -20,8 +20,8 @@ module.exports.loop = function () {
 
     
 
-    for(var name in Game.creeps) {
-        var creep = Game.creeps[name];
+    for(let name in Game.creeps) {
+        let creep = Game.creeps[name];
         if(creep.memory.role == 'miner') {
             roleMiner.run(creep);
         }
