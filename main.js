@@ -1,7 +1,6 @@
 let roleMiner = require('role.miner');
 let roleUpgrader = require('role.upgrader');
 let roleBuilder = require('role.builder');
-var nervSys = require('nervous-system');
 const { creepSignal } = require('./nervous-system');
 
 
@@ -12,10 +11,6 @@ const { creepSignal } = require('./nervous-system');
 
 creepSignal("miner")
 module.exports.loop = function () {
-
-
-
-
 
     for(let name in Game.creeps) {
         let creep = Game.creeps[name];
