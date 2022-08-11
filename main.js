@@ -3,6 +3,12 @@ let roleUpgrader = require('role.upgrader');
 let roleBuilder = require('role.builder');
 var nervSys = require('nervous-system');
 
+
+
+
+
+
+
 module.exports.loop = function () {
 
     for(let name in Game.creeps) {
@@ -16,10 +22,8 @@ module.exports.loop = function () {
         if(creep.memory.role == 'builder') {
             roleBuilder.run(creep);
         }
-        
-        var numberOfMiners = _.sum(Game.creeps, (c) => c.memory.role == 'miner')
-        if (numberOfMiners !== nervSys.minerNum) {
-            nervSys.creepSignal('miner')
-        }
     }
+
+    nervSys.checkCreeps();
 };
+
