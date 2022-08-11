@@ -7,6 +7,7 @@ console.log("nervous-system online")
 
 
 
+nervSys.scrubmem();
 
 
 module.exports.loop = function () {
@@ -26,7 +27,6 @@ module.exports.loop = function () {
     }
 
     nervSys.checkCreeps();
-    nervSys.scrubmem();
 };
 
 
