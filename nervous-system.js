@@ -24,16 +24,18 @@ function creepSignal(type) {
 
 function checkCreeps() {
 
+// pretty sure theres a way to encapsulate all of this as a template and a queue
 var numberOfMiners = _.sum(Game.creeps, (c) => c.memory.role == 'miner')
 var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder')
 var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader')
 
+
     if (numberOfMiners !== minerMax) {
-       creepSignal("minerPreset");
+       creepSignal("miner");
     } else if (numberOfBuilders !== builderMax) {
-        creepSignal("builderPreset");
-    } else if (numberOfMiners !== upgraderMax) {
-        creepSignal("upgraderPreset");
+        creepSignal("builder");
+    } else if (numberOfUpgraders !== upgraderMax) {
+        creepSignal("upgrader");
     }
 }
 
