@@ -7,11 +7,10 @@ console.log("nervous-system online")
 
 
 
-nervSys.scrubmem();
-
 
 module.exports.loop = function () {
 
+    nervSys.scrubmem();
 
     for(let name in Game.creeps) {
         let creep = Game.creeps[name];
