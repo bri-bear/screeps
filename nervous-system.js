@@ -23,10 +23,11 @@ function scrubmem() {
 
 
 function creepSignal(type) {
-        if(Game.spawns["Spawn1"].spawnCreep(creepPresets[type]) === 0) {
+    if (Game.spawns["Spawn1"].spawnCreep(creepPresets[type])) {
+    // if ((Game.spawns['Spawn1'].spawnCreep(creepPresets[type]), 'Worker1', { dryRun: true }) === true) {
                     Game.spawns["Spawn1"].spawnCreep(creepPresets[type], Math.floor (Math.random() * 500), {memory: {role: type}});
-                    console.log("spawning creep: " + type);
-        }
+                    console.log("attempting spawn: " + type);
+    }
 }
 
 function checkCreeps() {
