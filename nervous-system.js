@@ -2,12 +2,14 @@ const minerMax = 5;
 const builderMax = 1;
 const upgraderMax = 1;
 
-console.log("nervous system online..")
 
+
+
+console.log("nervous system online..")
 const creepPresets = {
-    "minerPreset": [WORK, CARRY, MOVE],
-    "builderPreset": [WORK,CARRY, MOVE],
-    "upgraderPreset": [WORK, CARRY, MOVE]
+    "miner": [WORK, CARRY, MOVE],
+    "builder": [WORK,CARRY, MOVE],
+    "upgrader": [WORK, CARRY, MOVE]
 }
 
 
@@ -17,23 +19,20 @@ function creepSignal(type) {
                     Math.floor(Math.random() * 500), 
                     {memory: {role: type}});
                     // Ignore this horrendous formatting for now. :)
-                    console.log("spawning creep with: " + type);
+                    console.log("spawning creep: " + type);
 }
 
 function checkCreeps() {
 
 var numberOfMiners = _.sum(Game.creeps, (c) => c.memory.role == 'miner')
+var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder')
+var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader')
+
     if (numberOfMiners !== minerMax) {
        creepSignal("minerPreset");
-    }
-
-var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder')
-     if (numberOfBuilders !== builderMax) {
+    } else if (numberOfBuilders !== builderMax) {
         creepSignal("builderPreset");
-    }
-
-var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader')
-    if (numberOfUpgraders !== upgraderMax) {
+    } else if (numberOfMiners !== upgraderMax) {
         creepSignal("upgraderPreset");
     }
 }
