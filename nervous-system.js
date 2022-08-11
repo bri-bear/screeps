@@ -12,6 +12,15 @@ const creepPresets = {
 }
 
 
+function scrubmem() {
+    for (const name in Memory.creeps) {
+        if (!(name in Game.creeps)) {
+            delete Memory.creeps[name];
+        }
+    }
+}
+
+
 function creepSignal(type, spawnParam = 'Spawn1') {
         if(Game.spawns[spawnParam].spawnCreep(creepPresets[type]) === 0) {
                     Game.spawns[spawnParam].spawnCreep(creepPresets[type], Math.floor (Math.random() * 500), {memory: {role: type}});
@@ -29,11 +38,16 @@ var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader')
 
     if (numberOfMiners != minerMax) {
        creepSignal("miner");
-    } else if (numberOfBuilders !== builderMax) {
-        creepSignal("builder");
-    } else if (numberOfUpgraders !== upgraderMax) {
-        creepSignal("upgrader");
-    }
 }
 
-module.exports = { creepSignal, checkCreeps }
+    if (numberOfBuilders !== builderMax) {
+        creepSignal("builder");
+    }
+
+    if (numberOfUpgraders !== upgraderMax) {
+        creepSignal("upgrader");
+    }
+
+}
+
+module.exports = { creepSignal, checkCreeps, scrubmem }

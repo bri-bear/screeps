@@ -11,6 +11,7 @@ console.log("nervous-system online")
 
 module.exports.loop = function () {
 
+
     for(let name in Game.creeps) {
         let creep = Game.creeps[name];
         if(creep.memory.role == 'miner') {
