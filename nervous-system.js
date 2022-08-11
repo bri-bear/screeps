@@ -5,7 +5,6 @@ const upgraderMax = 1;
 
 
 
-console.log("nervous system online..")
 const creepPresets = {
     "miner": [WORK, CARRY, MOVE],
     "builder": [WORK,CARRY, MOVE],
@@ -14,7 +13,7 @@ const creepPresets = {
 
 
 function creepSignal(type) {
-        if(Game.spawns['Spawn1'].spawnCreep(creepPresets[type], null, { dryRun: true})) {
+        if(Game.spawns['Spawn1'].spawnCreep(creepPresets[type]) === 0) {
                     Game.spawns['Spawn1'].spawnCreep(creepPresets[type], Math.floor (Math.random() * 500), {memory: {role: type}});
                     console.log("spawning creep: " + type);
         }

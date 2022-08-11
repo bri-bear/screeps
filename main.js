@@ -3,7 +3,7 @@ let roleUpgrader = require('role.upgrader');
 let roleBuilder = require('role.builder');
 var nervSys = require('nervous-system');
 
-
+console.log("nervous-system online")
 
 
 
