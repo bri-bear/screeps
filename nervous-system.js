@@ -1,4 +1,4 @@
-const minerMax = 5;
+const minerMax = 2;
 const builderMax = 1;
 const upgraderMax = 1;
 
@@ -14,12 +14,10 @@ const creepPresets = {
 
 
 function creepSignal(type) {
-                    Game.spawns['Spawn1'].
-                    spawnCreep(creepPresets[type], 
-                    Math.floor(Math.random() * 500), 
-                    {memory: {role: type}});
-                    // Ignore this horrendous formatting for now. :)
+        if(Game.spawns['Spawn1'].spawnCreep(creepPresets[type], null, { dryRun: true})) {
+                    Game.spawns['Spawn1'].spawnCreep(creepPresets[type], Math.floor (Math.random() * 500), {memory: {role: type}});
                     console.log("spawning creep: " + type);
+        }
 }
 
 function checkCreeps() {
@@ -30,7 +28,7 @@ var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder')
 var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader')
 
 
-    if (numberOfMiners !== minerMax) {
+    if (numberOfMiners != minerMax) {
        creepSignal("miner");
     } else if (numberOfBuilders !== builderMax) {
         creepSignal("builder");
