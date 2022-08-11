@@ -26,6 +26,7 @@ module.exports.loop = function () {
     }
 
     nervSys.checkCreeps();
+    nervSys.scrubmem();
 };
 
 

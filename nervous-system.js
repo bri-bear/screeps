@@ -21,7 +21,7 @@ function scrubmem() {
 }
 
 
-function creepSignal(type, spawnParam = 'Spawn1') {
+function creepSignal(type, spawnParam) {
         if(Game.spawns[spawnParam].spawnCreep(creepPresets[type]) === 0) {
                     Game.spawns[spawnParam].spawnCreep(creepPresets[type], Math.floor (Math.random() * 500), {memory: {role: type}});
                     console.log("spawning creep: " + type);
@@ -29,23 +29,20 @@ function creepSignal(type, spawnParam = 'Spawn1') {
 }
 
 function checkCreeps() {
-
 // pretty sure theres a way to encapsulate all of this as a template and a queue
 var numberOfMiners = _.sum(Game.creeps, (c) => c.memory.role == 'miner')
-var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder')
-var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader')
-
-
-    if (numberOfMiners != minerMax) {
-       creepSignal("miner");
-}
-
-    if (numberOfBuilders !== builderMax) {
-        creepSignal("builder");
+    if (numberOfMiners !== minerMax) {
+       creepSignal("miner", "Spawn1");
     }
 
+var numberOfBuilders = _.sum(Game.creeps, (c) => c.memory.role == 'builder')
+    if (numberOfBuilders !== builderMax) {
+        creepSignal("builder", "Spawn1");
+    }
+
+var numberOfUpgraders = _.sum(Game.creeps, (c) => c.memory.role == 'upgrader')
     if (numberOfUpgraders !== upgraderMax) {
-        creepSignal("upgrader");
+        creepSignal("upgrader", "Spawn1");
     }
 
 }
