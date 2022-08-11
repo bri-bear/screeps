@@ -12,9 +12,9 @@ const creepPresets = {
 }
 
 
-function creepSignal(type) {
-        if(Game.spawns['Spawn1'].spawnCreep(creepPresets[type]) === 0) {
-                    Game.spawns['Spawn1'].spawnCreep(creepPresets[type], Math.floor (Math.random() * 500), {memory: {role: type}});
+function creepSignal(type, spawnParam = 'Spawn1') {
+        if(Game.spawns[spawnParam].spawnCreep(creepPresets[type]) === 0) {
+                    Game.spawns[spawnParam].spawnCreep(creepPresets[type], Math.floor (Math.random() * 500), {memory: {role: type}});
                     console.log("spawning creep: " + type);
         }
 }
