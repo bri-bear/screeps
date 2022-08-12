@@ -2,10 +2,7 @@ let roleMiner = require('role.miner');
 let roleUpgrader = require('role.upgrader');
 let roleBuilder = require('role.builder');
 var nervSys = require('nervous-system');
-
 console.log("nervous-system online")
-
-
 
 
 module.exports.loop = function () {
@@ -14,13 +11,14 @@ module.exports.loop = function () {
 
     for(let name in Game.creeps) {
         let creep = Game.creeps[name];
-        if(creep.memory.role == 'miner') {
+        let creepRole = creep.memory.role;
+        if(creepRole == 'miner') {
             roleMiner.run(creep);
         }
-        if(creep.memory.role == 'upgrader') {
+        if(creepRole == 'upgrader') {
             roleUpgrader.run(creep);
         }
-        if(creep.memory.role == 'builder') {
+        if(creepRole == 'builder') {
             roleBuilder.run(creep);
         }
     }
